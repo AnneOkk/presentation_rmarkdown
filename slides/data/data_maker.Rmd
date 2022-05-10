@@ -1,0 +1,19 @@
+---
+title: "Data Creator"
+author: "Anne"
+date: "5/8/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r data, echo=FALSE}
+library(readxl)
+df <- read_excel("heroes_information.xlsx")
+```
+
+
+

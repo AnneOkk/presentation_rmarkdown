@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R Markdown Workshop</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Anne-Kathrin Kleine" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/sfah.css" type="text/css" />
+    <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+name: Rmarkdown Intro
+class: left, middle
+background-image: url(img/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg)
+background-size: cover
+
+&lt;h1&gt;&lt;span style="color:white"&gt; R Markdown&lt;/span&gt;
+
+&lt;img src="img/rmarkdown.png" alt="Sharingan" width="180"&gt;
+
+&lt;h2&gt;&lt;span style="color:white"&gt; .fancy[Making slides in R Markdown]&lt;/span&gt;
+
+&lt;h3&gt;&lt;span style="color:white"&gt; Anne-Kathrin Kleine | University of Groningen &lt;/span&gt;
+
+
+&lt;!-- this ends up being the title slide since seal = FALSE--&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+
+.hljs-github .hljs {
+    background: #D3D3D3;
+}
+
+.inline-c, remark-inline-code {
+   background: #228B22;
+   border-radius: 3px;
+   padding: 4px;
+   font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+}
+
+
+.blue-h{
+   background: #1261A0;
+}
+
+
+.out-t, remark-inline-code {
+   background: #1261A0;
+   border-radius: 3px;
+   padding: 4px;
+   
+}
+
+.pull-left-c {
+    float: left;
+    width: 58%;
+    
+}
+
+.pull-right-c {
+    float: right;
+    width: 38%;
+    
+}
+
+.medium {
+    font-size: 75%
+}
+
+.small {
+    font-size: 50%
+    }
+
+.action {
+    background-color: #f2eecb;
+  
+}
+
+
+&lt;/style&gt;
+    
+
+&lt;!-- this adds the link footer to all slides, depends on my-footer class in css--&gt;
+
+---
+class: middle, inverse
+
+## .fat[...takes the pain away]
+### 💅 formatting and managing **code** and **analyses results** (tables, figures, citations, and equations) 
+### 📕 convert output to pdf, html, word
+### 🧘 increase reproducibility, decrease possibility of mistakes 
+
+---
+
+class: middle, inverse
+
+## .fat[.fancy[Overview over the 2-day workshop]]
+
+---
+class: middle, inverse
+
+## .fancy[Day 1:]
+
+.pull-left[
+#### R Markdown metadata
+#### Writing text 
+#### Reference management 
+#### Writing code 
+#### Figures, tables, and plots
+]
+
+.pull-right[
+
+#### .fancy[GOAL 1] 💪 Being able to write your analysis scripts in R Markdown
+#### .fancy[GOAL 2] 💪 Knit the output into a format of your choice (Word, html, pdf) 
+#### .fancy[GOAL 3] 💪 Add text, figures/tables, and references to your R Markdown file 
+#### .fancy[GOAL 4] 💪 Learn how to use R Markdown templates
+]
+
+---
+class: middle, inverse
+
+## .fancy[Day 2:]
+
+#### Collaboration and version control using Git and GitGub
+
+  * .fancy[GOAL 4] 💪 Create publishable data analysis folder and push your code and output to GitHub
+
+    
+#### Use **Blogdown** for creating your own websites/ blogs to host analyses outputs (or for other use) 
+
+  * .fancy[GOAL 5] 💪 Build your own website using blogdown
+
+
+#### GitHub on osf integration
+
+  * .fancy[GOAL 6] 💪 Crate an anonymous project site on osf using your GitHub repositories 
+
+#### Optional: Introduction to shiny apps
+
+---
+
+class: middle, inverse
+
+# .fancy[General organization:]
+
+### You will work in pairs of 2 (switching after every part)
+### ❔ If you have questions ❔
+#### 1. Ask you buddy 🙆
+#### 2. Google (together) 👨‍💻👩‍💻
+#### 3. Ask me 👷‍
+
+---
+
+
+class: middle, inverse
+
+&lt;img class="circle" src="img/walking.jpeg" width="200px"/&gt;
+
+# Find me at...
+
+[LinkedIn](https://linkedin.com/in/anne-kathrin-kleine)  
+[GitHub](https://github.com/AnneOkk)  
+[AnneKathrinKleine.com](https://AnneKathrinKleine.com)  
+[a.k.kleine@rug.nl](mailto:alison@rstudio.com)
+
+
+---
+class: middle, inverse
+
+# Did you do the &lt;br&gt; .fat[.fancy[setup?]]
+
+.large[[Link to setup](https://anneokk.netlify.app/docs/r_markdown_workshop/preparation/preparation/)]
+
+---
+class: middle, inverse
+
+### .fat[.fancy[R Markdown - an intro]]
+
+### Create a new R Project from within R Studio
+
+![](img/openRProj.png)
+---
+class: middle, inverse
+
+### Save in new directory 
+
+&lt;img src="img/newdir.png" width="300px" height="200px" &gt;
+
+&lt;img src="img/newprojinnewdir.png" width="500px" height="200px" &gt;
+
+---
+class: middle, inverse
+
+### Choose the folder where you want to store your R Markdown file
+
+&lt;img src="img/browse.png" width="400px" height="200px" &gt;
+
+
+---
+
+class: middle, inverse
+
+### In that new folder, create an R Markdown file
+
+&lt;img src="img/creatermark.png" width="600px" height="200px" &gt;
+
+
+---
+class: middle, inverse
+
+### When you knit, the following happens:
+
+![](https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/9791d/images/rmarkdownflow.png)
+
+
+### knit executes the code if there is any, converts the resulting document from .Rmd (R Markdown) into .md (Markdown)
+### pandoc transforms the .md document into your preferred output format(s) (e.g., word, pdf, html)
+
+---
+class: middle, inverse
+
+# .fat[.fancy[The YAML header]]
+
+---
+class: middle, inverse
+
+## .fancy[YAML  &amp;mdash; General]
+
+YAML includes the metadata variables
+- e.g., title, output format    
+- written between a pair of three hyphens .blue-h[-]
+
+
+
+```r
+---  #&lt;
+title: 
+output:
+*---
+```
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Variables]
+
+- see [Pandoc User's Guide](https://pandoc.org/MANUAL.html) and [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf) for documentation and help
+
+- Typical YAML variables for an research paper are as follows:
+
+
+```r
+---
+title: 
+author: 
+date: 
+bibliography: 
+csl: 
+output: 
+---
+```
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Variables]
+
+Variables can be provided as .blue-h[strings]
+
+
+```r
+---
+*title: "My very funny and descriptive article title"
+output:
+---
+```
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Variables]
+
+Variables can be provided as strings, .blue-h[options]
+
+
+```r
+---
+title: "My very funny and descriptive article title"
+*output: pdf_document
+---
+```
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Variables]
+
+Variables can be provided as strings, options, and .blue-h[sub-options]
+
+
+```r
+---
+title: "My very funny and descriptive article title"
+output: 
+    pdf_document:
+*       keep_tex: true
+---
+```
+
+---
+class: middle, inverse
+## .fancy[YAML &amp;mdash; Variables]
+
+Variables can be provided as strings, options, sub-options, and .blue-h[code]
+
+
+```r
+---
+title: "My very funny and descriptive article title"
+output: 
+    pdf_document:
+        keep_tex: true
+*date: "\`r format(Sys.Date(), '%d %B %Y')`"
+---
+```
+---
+class: middle, inverse
+
+
+## .fancy[YAML &amp;mdash; Variables &amp;mdash; Output Formats]
+
+.pull-left-c[
+
+Documents as output formats include
+
+- .blue-h[HTML]
+    
+
+```r
+---
+title: "Theming with bslib and thematic"
+output: 
+  html_document:
+    code_folding: show
+    theme:
+      bg: "#202123"
+      fg: "#B8BCC2"
+      primary: "#EA80FC"
+      secondary: "#00DAC6"
+      base_font:
+        google: Prompt
+      heading_font:
+        google: Proza Libre
+---
+```
+]    
+
+.pull-right-c[
+
+&lt;img src="img/html.png" width="400px" &gt;
+
+]
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Variables &amp;mdash; Output Formats]
+
+.pull-left-c[
+
+Documents as output formats include
+
+- HTML
+- .blue-h[LaTeX]
+    
+
+```r
+---
+title: "Theming with bslib and thematic"
+*output: latex_document
+---
+```
+]    
+
+.pull-right-c[
+
+&lt;img src="img/latex_out.png" width="400px" &gt;
+
+]
+
+---
+class: middle, inverse
+
+##.fancy[ YAML &amp;mdash; Variables &amp;mdash; Output Formats]
+
+.pull-left[
+
+Documents as output formats include
+
+- HTML
+- LaTeX
+- .blue-h[PDF]
+    
+
+```r
+---
+title: "Theming with bslib and thematic"
+*output: pdf_document
+---
+```
+]    
+
+.pull-right-c[
+
+&lt;img src="img/pdf_out.png"  &gt;
+
+]
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Variables &amp;mdash; Output Formats]
+
+.pull-left-c[
+
+Documents as output formats include
+
+- HTML
+- LaTeX
+- PDF
+- .blue-h[Word]
+    
+
+```r
+---
+title: "Theming with bslib and thematic"
+*output: word_document
+---
+```
+]    
+
+.pull-right-c[
+
+&lt;img src="img/word_out.png" width="400px"&gt;
+
+]
+
+---
+class: middle, inverse
+
+### .salt[.fancy[YAML &amp;mdash; Variables &amp;mdash; Output Formats]]
+
+.pull-left[
+
+- Documents as output formats
+
+  - `html_document`
+  - `latex_document`
+  - `pdf_document`&lt;sup&gt;*&lt;/sup&gt;
+  - `word_document`
+  - `github_document`
+  - `md_document`
+  - `odt_document`
+  - `rtf_document`
+
+]
+    
+.pull-right[ 
+
+- Presentations as output formats
+
+  - `beamer_presentation`
+  - `iosslides_presentation`
+  - `powerpoint_presentation`
+  - `slidy_presentation`
+
+]    
+
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; For reasons of simplicity, this workshop focuses on LaTex and/or PDF outputs. Different output formats have slightly different customisations. See [Pandoc User's Guide](https://pandoc.org/MANUAL.html) and/or [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf).
+
+]
+
+---
+class: middle, inverse
+
+## .fancy[YAML &amp;mdash; Strings &amp;mdash; External Files]
+
+
+```r
+---
+title: "Journal title"
+author: "Jane Doe^[Department of Science, University of Random. Email: jane.doe@random.edu. Website: http://www.janedoe.com.]"                                    
+date: 4 March 2022 
+*bibliography: references.bib
+*csl: apa.csl
+output: pdf_document                                    
+---
+```
+
+---
+class: middle, inverse
+
+##  .fancy[YAML &amp;mdash; Strings &amp;mdash; External Files]
+
+
+```r
+---
+...
+bibliography: references/ref_library.bib                                    
+csl: "../../paperstyle/csl/apa.csl" # two dots (..) mean moving one folder up
+...
+---
+```
+--
+
+- ❕❗locations of files  re specified as .blue-h[relative to the working directory]❕❗
+    
+- for reproducibility reasons, hard-coded stings should be avoided 🙏
+  -  e.g., `"C:/Users/Dropbox/styles/apa.csl"` 👎️
+
+---
+
+class: middle, inverse
+
+# .fat[.fancy[Writing text]]
+## slides source: [Resul Umit](https://resulumit.com/teaching/rmd_workshop.html#112)
+
+---
+
+class: middle, inverse
+## Syntax &amp;mdash; Overview
+
+### R Markdown follows the syntax in Pandoc's Markdown 
+
+- for the complete rules of the syntax, see [Pandoc User's Guide](https://pandoc.org/MANUAL.html)
+- for a useful summary of the syntax, see the [R Markdown Cheat Sheet](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
+   
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Lines
+
+Multiple spaces on a given line are reduced to one
+
+
+```r
+This is a sentence followed by four spaces.    This is another sentence on the same line.
+```
+
+.out-t[This is a sentence followed by four spaces.    This is another sentence on the same line.]
+
+&lt;br&gt;
+
+Line endings with fewer than two spaces are ignored
+
+
+```r
+This is a sentence followed by one space.
+This is another sentence on a new line.
+```
+
+.out-t[This is a sentence followed by one space. This is another sentence on a new line.]
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Hard Breaks
+
+Two or more spaces at the end of lines introduce hard breaks, forcing a new line
+
+
+```r
+This is a sentence followed by two spaces.  
+This is another sentence on a new line.
+```
+
+.out-t[This is a sentence followed by two spaces.  
+This is another sentence on a new line.]
+ 
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Line Blocks
+
+Spaces on lines that start with a vertical line .blue-h[|] are kept
+
+
+```r
+| a one-space indent
+|     a five-space indent
+|          a ten-space indent  
+```
+
+.out-t[
+
+&amp;nbsp;a one-space indent  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a five-space indent  
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;a ten-space indent  
+
+]
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Block Quotes
+
+Lines starting with the greater-than sign .blue-h[&amp;#62;] introduce block quotes&lt;sup&gt;*&lt;/sup&gt;
+
+
+```r
+&gt; In God, we trust. All others must bring data. 
+&gt;
+&gt; --- Anonymous 
+```
+
+.out-t[
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;In God, we trust. All others must bring data.    
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;mdash; Anonymous
+]
+
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Paragraphs
+
+One or more&lt;sup&gt;*&lt;/sup&gt; blank lines introduce a new paragraph
+
+
+```r
+This is the first sentence of a paragraph as it is preceded by a blank line. This is the second 
+sentence of that paragraph, which is followed by a blank line. 
+This is the first sentence of a *new paragraph* as it is preceded by a blank line. This is the 
+second sentence of that paragraph, which is followed by a blank line.
+```
+
+.out-t[
+
+This is the first sentence of a paragraph as it is preceded by a blank line. This is the second 
+sentence of that paragraph, which is followed by a blank line.
+
+This is the first sentence of a *new paragraph* as it is preceded by a blank line. This is the 
+second sentence of that paragraph, which is followed by a blank line.
+
+]
+
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; Multiple blank lines between paragraphs reduce to one.
+
+]
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Comments
+
+Text with the syntax .inline-c[&lt;!--].inline-c[comments --&gt;] is omitted from output
+
+```md
+&lt;!-- This paragraph needs re-writing --&gt;
+This is the first sentence of a paragraph as it is preceded by a blank line. This is the second 
+sentence of that paragraph, which is followed by a blank line. 
+
+This is the first sentence of a new paragraph &lt;!-- I've removed italics --&gt; as it is preceded 
+by a blank line. This is the second sentence of that paragraph, which is followed by a blank 
+line. 
+
+```
+
+.out-t[
+
+This is the first sentence of a paragraph as it is preceded by a blank line. This is the second 
+sentence of that paragraph, which is followed by a blank line.
+
+This is the first sentence of a new paragraph as it is preceded by a blank line. This is the 
+second sentence of that paragraph, which is followed by a blank line.
+
+]
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Headers
+
+The number sign .yellow-h[&amp;#x23;] introduces headers; lower levels are created with additional signs &amp;mdash; up to total five levels
+
+.pull-left[
+
+.inline-c[&amp;#x23; Introduction] becomes
+
+.out-t[
+
+# Introduction
+
+]
+
+.inline-c[&amp;#x23;&amp;#x23; 1. Introduction] becomes
+
+.out-t[
+
+## 1. Introduction
+
+]
+
+]
+
+.pull-right[
+
+.inline-c[&amp;#x23;&amp;#x23;&amp;#x23; 3.1 Introduction] becomes
+
+.out-t[
+
+### 3.1 Introduction
+
+]
+
+.inline-c[&amp;#x23;&amp;#x23;&amp;#x23;&amp;#x23; Introduction] becomes
+
+.out-t[
+
+#### Introduction
+
+]
+]
+---
+
+class: middle, inverse
+
+## Syntax &amp;mdash; Emphases {#emph}
+
+A pair of single asterisk .blue-h[&amp;#42;] or underscores .blue-h[&amp;#95;] introduces italics
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;italics&amp;#42;&lt;/span&gt; becomes .out-t[*italics*]    
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;italics&amp;#95;&lt;/span&gt; becomes .out-t[*italics*] as well
+
+&lt;br&gt;
+
+A pair of double asterisk or underscores introduces bold  
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;&amp;#42;bold&amp;#42;&amp;#42;&lt;/span&gt; becomes .out-t[**bold**]
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;&amp;#95;bold&amp;#95;&amp;#95;&lt;/span&gt; becomes .out-t[**bold**] as well
+
+&lt;br&gt;
+
+These two rules can be combined
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;&amp;#42;&amp;#95;bolditalics&amp;#95;&amp;#42;&amp;#42;&lt;/span&gt; becomes .out-t[**_bolditalics_**]
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;&amp;#42;&amp;#42;bolditalics&amp;#42;&amp;#42;&amp;#95;&lt;/span&gt; becomes .out-t[_**bolditalics**_]  as well
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Strikethrough
+
+A pair of double tildes .yellow-h[~] introduces strikethrough
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#126;&amp;#126;strikethrough&amp;#126;&amp;#126;&lt;/span&gt; becomes .out-t[~~strikethrough~~]
+
+&lt;br&gt;
+
+Strikethrough can be combined with italics or bold
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;&amp;#42;&amp;#126;&amp;#126;strikebold&amp;#126;&amp;#126;&amp;#42;&amp;#42;&lt;/span&gt; or &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;&amp;#95;&amp;#126;&amp;#126;strikebold&amp;#126;&amp;#126;&amp;#95;&amp;#95;&lt;/span&gt;, they both become .out-t[**~~strikebold~~**]
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#126;&amp;#126;&amp;#42;&amp;#42;strikebold&amp;#42;&amp;#42;&amp;#126;&amp;#126;&lt;/span&gt; or &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#126;&amp;#126;&amp;#95;&amp;#95;strikebold&amp;#95;&amp;#95;&amp;#126;&amp;#126;&lt;/span&gt;, they both become .out-t[~~**strikebold**~~] as well
+
+&lt;br&gt;
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#42;&amp;#126;&amp;#126;strikeitalitcs&amp;#126;&amp;#126;&amp;#42;&lt;/span&gt; or &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#95;&amp;#126;&amp;#126;strikeitalitcs&amp;#126;&amp;#126;&amp;#95;&lt;/span&gt;, they both become .out-t[*~~strikeitalitcs~~*] 
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#126;&amp;#126;&amp;#42;strikeitalitcs&amp;#42;&amp;#126;&amp;#126;&lt;/span&gt; or &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#126;&amp;#126;&amp;#95;strikeitalitcs&amp;#95;&amp;#126;&amp;#126;&lt;/span&gt;, they both become .out-t[*~~strikeitalitcs~~*] as well
+
+---
+
+class: middle, inverse
+
+## Syntax &amp;mdash; External links
+
+You can link text to URLs
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#91;visit my website](https&amp;#58;//https:/annekathrinkleine.com/)&lt;/span&gt; becomes .out-t[[visit my website](https://annekathrinkleine.com/)]
+
+You can also link text to an email address
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#91;email me](mailto&amp;#58;a.k.kleine@rug.nl)&lt;/span&gt;&lt;sup&gt;*&lt;/sup&gt; becomes .out-t[[email me](mailto:a.k.kleine@rug.nl)]
+
+&lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&amp;#60;a.k.kleine@rug.nlo&amp;#62;&lt;/span&gt; becomes .out-t[&lt;a.k.kleine@rug.nl&gt;]
+
+
+---
+class: middle, inverse
+
+## Syntax &amp;mdash; Equations
+
+Inline equations go between a pair of single dollar signs "$" with no space between the signs and the equation itself
+
+.inline-c[$E = mc^{2}$] becomes .out-t[*E = mc&lt;sup&gt;2&lt;/sup&gt;*]
+
+&lt;br&gt;
+
+--
+
+Block equations go in between a pair of double dollar signs &amp;mdash; with or without spaces, it works
+
+.inline-c[&amp;#x24;&amp;#x24;  E = mc^{2}].inline-c[&amp;#x24;&amp;#x24;] becomes
+
+
+.out-t[
+
+&lt;center&gt; &lt;i&gt; E = mc&lt;sup&gt;2&lt;/sup&gt; &lt;/i&gt; &lt;/center&gt;
+
+]
+
+
+---
+class: middle, inverse
+## Syntax &amp;mdash; Footnotes &amp;mdash; Inline Notes
+
+For inline footnotes, use the .inline-c[^[footnote]] syntax
+
+.inline-c[Jane Doe^[Corresponding author.]] becomes .out-t[Jane Doe&lt;sup&gt;1&lt;/sup&gt;]
+
+&lt;br&gt;
+
+.footnote[
+
+.out-t[&lt;sup&gt;1&lt;/sup&gt; Corresponding author.]
+
+]
+
+
+---
+class: middle, inverse
+## Syntax &amp;mdash; Lists
+
+Lines starting with asterisk .yellow-h[&amp;#42;] as well as plus .yellow-h[&amp;#43;] or minus .yellow-h[&amp;#8722;] signs introduce lists
+
+
+```r
+- books
+- articles
+- reports
+```
+
+.out-t[
+
+- books
+- articles
+- reports
+
+]
+
+---
+class: middle, inverse
+## Syntax &amp;mdash; Lists &amp;mdash; Nesting
+
+Lists can be nested within each other, with indentation
+
+
+```r
++ books
++ articles
+    - published
+    - under review
+        + revised and resubmitted
+    - work in progress
+```
+
+.out-t[
+
++ books
++ articles
+    - published
+    - under review
+        + revised and resubmitted
+    - work in progress
+    
+]
+
+---
+class: middle, inverse
+## Syntax &amp;mdash; Lists &amp;mdash; Numbering
+
+List items can be numbered
+
+
+```r
+1. books
+2. articles
+    - published
+    - under review
+        + revised and resubmitted
+    - work in progress
+```
+
+.out-t[
+
+1. books
+2. articles
+    - published
+    - under review
+        + revised and resubmitted
+    - work in progress
+
+]
+
+---
+class: middle, inverse
+.pull-left[### Dashes
+
+Two hyphens grouped together introduce an en-dash
+
+.inline-c[&amp;#8208;&amp;#8208;] becomes .out-t[&amp;ndash;]
+
+
+
+Three hyphens grouped together introduce an em-dash
+
+.inline-c[&amp;#8208;&amp;#8208;&amp;#8208;] becomes .out-t[&amp;mdash;]
+]
+.pull-right[
+### Subscripts and Superscripts
+
+A pair of tildes introduces subscript
+
+.inline-c[CO&amp;#126;2&amp;#126;] becomes .out-t[CO&lt;sub&gt;2&lt;/sub&gt;]
+
+
+A pair of carets introduces superscript
+
+.inline-c[R&amp;#94;2&amp;#94;] becomes .out-t[R&lt;sup&gt;2&lt;/sup&gt;]
+
+]
+
+---
+
+class: middle, inverse
+
+# .fat[.fancy[Reference management]]
+
+---
+class: middle, inverse
+## References &amp;mdash; Bibliography Database
+
+.pull-left-c[
+  - References are defined in .bib files
+  
+  - they follow the BibTeX format
+  
+  &lt;br&gt;
+- `pandoc` looks for a .bib file, and for the definitions therein, to process citations
+  
+- .bib files are specified with the `bibliography` variable in YAML
+  
+  &lt;br&gt;
+    
+- `pandoc` can process a citation only if there is a linked entry in the .bib file
+  
+  
+]
+
+
+.pull-right-c[
+  &lt;img src="img/bibfile.png" width="250px" height="300px" &gt;
+    
+]
+
+---
+class: middle, inverse
+
+## References &amp;mdash; Bibliography Database &amp;mdash; Entries
+  
+  .pull-left-c[
+    
+- A BibTeX entry consists of three elements
+    - a type (e.g., `@article`)    
+    - a citation-key (e.g., `bennett2015`)    
+    - a number of tags (e.g., `title`, `author`)
+    
+    
+  ]
+
+---
+class: middle, inverse
+
+## References &amp;mdash; Bibliography Database &amp;mdash; Entries
+  
+### E.g., via `Google Scholar`:
+
+#### follow `cite -&gt; BibTex` and copy
+#### paste into .bib, edit if necessary, and save
+
+### Many other good options, e.g., [Zotero](https://christopherjunk.netlify.app/blog/2019/02/25/zotero-rmarkdown/#:~:text=In%20Zotero%20follow%20this%20path,and%20follow%20the%20system%20setup.), [Mendeley](https://rosannavanhespen.nl/rmarkdown/writing-your-thesis-with-r-markdown-2-text-citations-and-equations/#:~:text=Open%20Mendeley%20and%20select%20Mendeley,your%20R%20Markdown%20document%20lives.)
+
+---
+class: middle, inverse
+
+## References &amp;mdash; Style
+  
+- Reference styles are defined in .csl files
+
+- files for different styles (e.g., APA) are available at [https://www.zotero.org/styles](https://www.zotero.org/styles)
+
+&lt;br&gt;
+  
+- `pandoc` looks for a .csl file, and for the styles therein, to style citations and references
+
+- .csl files are specified with the `csl` variable in YAML
+
+
+&lt;br&gt;
+  
+- .csl files affect the style only in outputs
+
+- no matter which the style is used, the citation syntax in .Rmd documents remains the same
+
+
+---
+class: middle, inverse
+
+## References &amp;mdash; In-text Citation Syntax &amp;mdash; Author-Date Styles (APA 7)&lt;sup&gt;&lt;/sup&gt;
+  
+
+
+.pull-left[
+  
+  .inline-c[[@bennett2015]] becomes .out-t[(Bennett, 2015)]
+  
+  .inline-c[@bennett2015] becomes .out-t[Bennett (2015)]
+  
+  .inline-c[[-@bennett2015]] becomes .out-t[(2015)]
+  
+  .inline-c[-@bennett2015] becomes .out-t[2015]
+  
+  .inline-c[[@bennett2015 35]] becomes .out-t[(Bennett, 2015, p. 35)]
+  
+  .inline-c[[@bennett2015 33-35]] becomes .out-t[(Bennett, 2015, pp. 33&amp;ndash;35)]
+  
+  
+]
+
+
+.pull-right[
+  
+  .inline-c[[@bennett2015, ch. 1]] becomes .out-t[(Bennett, 2015, ch. 1)]
+  
+  .inline-c[[@bennett2015; @gilbert2019]] becomes .out-t[(Bennett, 2015; Gilbert, 2019)]
+  
+  .inline-c[[see @bennett2015, for details]] becomes .out-t[(see Bennett, 2015, for details)]
+  
+  .inline-c[@bennett2015 [33-35]] becomes .out-t[Bennett (2015, pp. 33&amp;ndash;35)]
+  
+]
+
+
+---
+class: middle, inverse
+
+## Citations &amp;mdash; Reference List
+
+
+
+```r
+This is the last sentence of an APA style manuscript.
+## References
+```
+
+.out-t[
+  
+  This is the last sentence of an APA style manuscript.
+  
+  ### References
+  
+  Bennett, S. (2015). Peanut butter and jelly. *Journal of Bone, 1*(12), 3–35.
+  
+  Gilbert, T. (2019). Turning wine into water. In M. Albert (Ed.), *The book of ground* (pp. 124–142). Antman.
+  
+]
+
+---
+class: middle, inverse
+
+name: reference-links
+
+## References &amp;mdash; Internal Links
+
+For internal links from in-text citations to the reference list, set .inline-c[link-citations: yes] in YAML
+
+- a click on these links takes the screen to the relevant entry in the list
+- the `linkcolor` variable make these links explicit
+
+
+
+```r
+---
+...
+bibliography: references.bib
+csl: apa.csl
+*link-citations: yes
+*linkcolor: blue
+...
+---
+```
+
+---
+class: middle, inverse
+
+# .fat[.fancy[Code]]
+## Slide source: [Resul Umit](https://resulumit.com/teaching/rmd_workshop.html#112)
+## Data: [Superhero Dataset](https://domosoftware.sharepoint.com/:x:/s/CS-Edu-PublicFiles/EfRNaW_lszlHg-m2hMNZnLABv0bM12TTLVrS3MtSD1bzrw?e=f2gBgd)
+
+---
+class: middle, inverse
+
+# Code, in and outside chunks
+  
+### Code chunks: 
+
+
+```r
+library(readxl)
+library(dplyr) 
+df &lt;- read_excel("data/heroes_information.xlsx") %&gt;% 
+  na_if(., -99) %&gt;% 
+  mutate(bmi = round(Weight/((Height/100)**2)), 2) %&gt;% 
+  rename(., Water_allergy = Gender) %&gt;% 
+  mutate(Water_allergy = recode(Water_allergy, Male = "Yes", Female = "No")) %&gt;% 
+  select(., -...1, -`2`)
+```
+
+
+### Inline:
+
+.inline-c[The average height of a superhero is  &lt;span style="background-color: #e5e5e5; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&lt;code&gt;&amp;grave;r round(mean(df$Height, na.rm = T), 2) &amp;grave;&lt;/code&gt;&lt;/span&gt; centimeter] becomes: 
+
+The average height of a superhero is 186.73 centimeter.
+
+---
+
+class: middle, inverse
+
+## Code Chunks
+  
+.pull-left-c[
+    
+- Code chunks are delimited spaces between a pair of three backticks `
+- their output, if there is any, appears in the output document
+    
+&lt;br&gt;
+      
+- in curly brackets {, code chunks take
+  
+  - .blue-h[a language engine]
+  - .blue-h[a label]
+  - .blue-h[options]
+      + The complete list of options is available at &lt;https://yihui.org/knitr/options&gt;
+        
+  ]    
+
+.pull-right-c[
+
+  ````md
+  ```{r, setup, echo=FALSE}
+```
+````
+]
+
+---
+class: middle, inverse
+
+## Some chunk options
+
+#### .fancy[echo = FALSE] to exclude code 
+````md
+```{r, show_df, echo = FALSE}
+head(df)
+```
+````
+
+
+```
+## # A tibble: 6 × 11
+##   name    Water_allergy `Eye color` Race  `Hair color` Height Publisher `Skin color` Alignment Weight
+##   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt;
+## 1 A-Bomb  Yes           yellow      Human No Hair         203 Marvel C… -            good         441
+## 2 Abe Sa… Yes           blue        Icth… No Hair         191 Dark Hor… blue         good          65
+## 3 Abin S… Yes           blue        Unga… No Hair         185 DC Comics red          good          90
+## 4 Abomin… Yes           green       Huma… No Hair         203 Marvel C… -            bad          441
+## 5 Abraxas Yes           blue        Cosm… Black            NA Marvel C… -            bad           NA
+## 6 Absorb… Yes           blue        Human No Hair         193 Marvel C… -            bad          122
+## # … with 1 more variable: bmi &lt;dbl&gt;
+```
+
+---
+class: middle, inverse
+
+## Some chunk options
+
+#### .fancy[echo = TRUE] to include code and output 
+````md
+```{r, show_df_1, echo = TRUE}
+head(df)
+```
+````
+
+
+```r
+head(df)
+```
+
+```
+## # A tibble: 6 × 11
+##   name    Water_allergy `Eye color` Race  `Hair color` Height Publisher `Skin color` Alignment Weight
+##   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt;
+## 1 A-Bomb  Yes           yellow      Human No Hair         203 Marvel C… -            good         441
+## 2 Abe Sa… Yes           blue        Icth… No Hair         191 Dark Hor… blue         good          65
+## 3 Abin S… Yes           blue        Unga… No Hair         185 DC Comics red          good          90
+## 4 Abomin… Yes           green       Huma… No Hair         203 Marvel C… -            bad          441
+## 5 Abraxas Yes           blue        Cosm… Black            NA Marvel C… -            bad           NA
+## 6 Absorb… Yes           blue        Human No Hair         193 Marvel C… -            bad          122
+## # … with 1 more variable: bmi &lt;dbl&gt;
+```
+
+---
+class: middle, inverse
+
+## Some chunk options
+
+#### .fancy[include = FALSE] to exclude entire chunk content (code and output)
+
+````md
+```{r, show_df_2, include = FALSE}
+head(df)
+```
+````
+
+
+
+---
+
+class: middle, inverse
+
+## Some chunk options
+
+#### .fancy[results = "hide"] to include only code (no output)
+
+````md
+```{r, show_df_3, results = "hide"}
+head(df)
+```
+````
+
+
+```r
+head(df)
+```
+
+---
+
+class: middle, inverse
+
+## Some chunk options
+
+Cache results, useful for complex analyses:
+
+````md
+```{r ... cache=TRUE}
+```
+````
+
+Prevent evaluation:
+
+````md
+```{r ... eval=FALSE}
+```
+````
+
+Show results as produced by code (no transformation with `pandoc`, necessary for some packages (e.g., stargazer)):
+
+````md
+```{r ... results="asis"}
+```
+````
+
+Prevent showing warnings, messages, errors:
+
+````md
+```{r ...error=FALSE, message=FALSE, warning=FALSE}
+```
+````
+
+---
+class: middle, inverse
+
+### .salt[Code Chunks &amp;mdash; The Setup Chunk]
+  
+It is recommended to use the first code chunk for general setup, where you can
+
+- define .blue-h[your own defaults] for chunk options, with `knitr::opts_chunk$set()`
+- load the necessary packages    
+- import raw data
+
+````md
+```{r, setup, include=FALSE}
+# `chunk option defaults`
+knitr::opts_chunk$set(echo=FALSE, message=FALSE)
+# `packages`
+library(dplyr)
+library(ggplot2)
+library(stargazer)
+library(readxl)
+# `data`
+df_raw &lt;-read_excel("data/heroes_information.xlsx")
+```
+````
+
+---
+
+class: middle, inverse
+
+### .salt[Code Chunks &amp;mdash; The Data Chunk]
+  
+Second chunk for the main operations on raw data
+- cleaning, transformations
+
+````md
+```{r, data, ...}
+df &lt;- read_excel("data/heroes_information.xlsx") %&gt;% 
+  na_if(., -99) %&gt;% 
+  mutate(bmi = round(Weight/((Height/100)**2)), 2) %&gt;% 
+  rename(., Water_allergy = Gender) %&gt;% 
+  mutate(Water_allergy = recode(Water_allergy, Male = "Yes", Female = "No")) %&gt;% 
+  select(., -...1, -`2`)
+
+```
+````
+---
+class: middle, inverse
+
+ ## Inline Code &amp;mdash; Overview
+  
+Code can also be incorporated in text, with the &lt;span style="background-color: #e5e5e5; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;&lt;code&gt;&amp;grave;r &amp;grave;&lt;/code&gt;&lt;/span&gt; syntax
+
+
+---
+class: middle, inverse
+## Inline Code &amp;mdash; Examples
+  
+
+```r
+If we multiply _pi_ by 5, we get \`r pi * 5`.
+```
+
+.out-t[If we multiply _pi_ by 5, we get 15.7079633.]
+
+&lt;hr style="height:10px; visibility:hidden;" /&gt;
+  
+
+```r
+The average height of a superhero in the dataset is \`r mean(df$Height, na.rm = T)`, which would 
+round to \`r round(mean(df$Height, na.rm = T), digits = 1)`.
+```
+
+.out-t[The average height of a superhero in the dataset is 186.7263056, which would round to 186.7.]
+
+&lt;hr style="height:10px; visibility:hidden;" /&gt;
+  
+
+```r
+__Only \`r nrow(subset(df, Height &lt; 100))` superheros__ in the dataset are Smallings.
+```
+
+.out-t[__Only 9 superheros__ in the dataset are Smallings.]
+
+---
+
+class: middle, inverse
+
+# .fat[.fancy[Figures]]
+
+---
+class: middle, inverse
+## Figures &amp;mdash; Images &amp;mdash; Markdown Syntax
+  
+The syntax &lt;span style="background-color: #228B22; border-radius: 3px; padding: 4px; font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;"&gt;!&amp;#91;Figure Caption&amp;#93;(figure.extension)&lt;/span&gt; embeds images, and/or figures produced elsewhere,&lt;sup&gt;*&lt;/sup&gt; into .Rmd documents
+  
+
+```r
+![A superhero's best friend](img/superdog.jpg)
+```
+
+&lt;img src="img/superdog.jpg" width="15%" style="display: block; margin: auto;" /&gt;
+
+&lt;center&gt;Figure 1: A superhero's best friend.&lt;/center&gt;
+---
+class: middle, inverse
+
+## Figures &amp;mdash; Images &amp;mdash; `knitr`
+        
+The `knitr` package offers a capable alternative with the `include_graphics()` function
+      
+````md
+```{r, superdog, echo=FALSE, fig.cap="A superhero's best friend."}
+knitr::include_graphics("img/superdog.jpg")
+```
+````
+
+&lt;img src="img/superdog.jpg" width="15%" /&gt;
+
+Figure 1: A superhero's best friend.
+
+---
+class: middle, inverse
+## Figures &amp;mdash; Images &amp;mdash; `knitr`
+
+Size is defined with the chunk options `out.width` or `out.height` 
+
+.pull-left[
+````md
+```{r ... `out.width="15%"`}
+knitr::include_graphics("img/superdog.jpg")
+```
+````
+
+&lt;img src="img/superdog.jpg" width="15%" /&gt;
+]
+
+.pull-right[
+````md
+```{r ... `out.width="40%"`}
+knitr::include_graphics("img/superdog.jpg")
+```
+````
+
+&lt;img src="img/superdog.jpg" width="40%" /&gt;
+
+]        
+---
+
+class: middle, inverse
+
+# .fat[.fancy[Plots - ggplot2]]
+
+---
+class: middle, inverse
+
+1) The `ggplot` function and the `data` argument
+- specify a data frame in the main `ggplot` function
+
+
+```r
+ggplot(data = df)
+```
+
+--
+
+2) The mapping aesthetics, or .blue-h[aes]; most importantly, the variable(s) that we want to plot
+- specify as an additional argument in the same `ggplot` function
+
+
+```r
+ggplot(data = df, 
+*      mapping = aes(x = Height, y = Weight, color = Alignment))
+```
+
+--
+
+3) The geometric objects, or .blue-h[geom]; the visual representations
+- specify, after a plus sign blue-h[+], as an additional function
+
+
+```r
+ggplot(data = df, 
+       mapping = aes(x = Height, y = Weight, color = Alignment)) +
+*      geom_point()
+```
+
+---
+class: middle, inverse
+
+## Figures &amp;mdash; `ggplot2`
+
+Put the code in a chunk, and give it a caption
+
+.pull-left-c[
+
+````md
+```{r, scatterplot, `fig.cap = "Superheros size"`}
+ggplot(data = df, 
+       mapping = aes(x = Height, y = Weight, color = Alignment)) +
+       geom_point()
+```
+````
+
+]
+
+.pull-right-c[
+
+![](xaringan_files/figure-html/unnamed-chunk-36-1.png)&lt;!-- --&gt;
+
+Figure 1. A scatterplot of superheros' height and weight.
+
+]
+
+---
+class: middle, inverse
+## Figures &amp;mdash; `ggplot2`
+
+Add facets for subgroups, e.g., `branch`
+
+.pull-left-c[
+
+````md
+```{r, scatterplot, fig.cap = "A scatterplot of superheros' height and weight."}
+ggplot(data = df,  
+       mapping = aes(x = Height, y = Weight, color = Alignment))  +
+       geom_point() +
+       facet_wrap(. ~ Water_allergy)
+```
+````
+
+]
+
+.pull-right-c[
+
+![](xaringan_files/figure-html/unnamed-chunk-37-1.png)&lt;!-- --&gt;
+
+Figure 1. A scatterplot of superheros' height and weight.
+
+    ]
+--
+Every plot you can think of - you can create it in R! See [R Graph Gallery](https://r-graph-gallery.com/ridgeline-plot.html)!  
+--
+Also have a look at the [plotly graphical library](https://plotly.com/r/).
+
+---
+
+class: middle, inverse
+
+# .fat[.fancy[Tables]]
+
+---
+class: middle, inverse
+
+## Tables with `stargazer` 
+
+- A capable package for creating at least three kinds of tables
+
+    - raw data, in columns and rows
+    - descriptive/summary statistics
+    - regression models
+
+---
+
+## Tables with `stargazer` &amp;mdash; Notes
+
+- The `stargazer` package requires specific settings
+
+  - in the chunk options
+  - and, in the `type` argument of the `stargazer()` function
+
+&lt;br&gt;
+
+- These settings depend on the desired output format,&lt;sup&gt;*&lt;/sup&gt; as shown below
+
+.pull-left[
+
+|  Output       | Chunk Option    |  Type Argument |                   
+|:------------- |:----------------|:-------------- |
+| LaTex / PDF   |  results="asis" | latex          |  
+| HTML          |  results="asis" | html           |  
+| Word          |  comment=""     | text           |
+
+]
+
+.footnote[
+
+&lt;sup&gt;*&lt;/sup&gt; The following slides use the setting for LaTex and PDF outputs.
+
+]
+
+---
+class: middle, inverse
+## Tables with `stargazer` &amp;mdash; formats
+
+- `stargazer` tables look slightly different in different output formats
+
+- workarounds for Word:
+      - `knit` to HTML as well as Word, copy the tables from HTML to Word
+      - `knit` to PDF, open the PDF in Word
+      - use a different package to create tables, such as `huxtable`
+
+---
+class: middle, inverse
+
+## Example data table with `stargazer`
+  
+Table of first three rows of the dataset
+
+````md
+```{r, data_table, echo=FALSE, results="asis"}
+stargazer(data = head(df, n = 3), type = "latex", summary = FALSE)
+```
+````
+--
+  
+&lt;br&gt;
+  
+Notice the options of the chunk and the arguments of the function
+
+--
+  
+- with .inline-c[results="asis"], `knitr` will pass through results without reformatting them 
+- these results are produced in LaTeX, due to .inline-c[type = "latex"]
+- they should remain LaTeX because our outcome document is PDF, converted from LaTeX
+
+--
+  
+- with .inline-c[summary = FALSE], the table will present the data, not its descriptive statistics
+
+---
+
+## Example data table with `stargazer`
+  
+Table of the first three rows of the dataset
+
+````md
+```{r, data_table, echo=FALSE, results="asis"}
+stargazer(data = head(df, n = 3), type = "latex", summary = FALSE)
+```
+````
+&lt;br&gt;
+    &lt;center&gt;Table 1: &lt;/center&gt; 
+    
+
+&lt;table style="text-align:center"&gt;&lt;tr&gt;&lt;td colspan="12" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;name&lt;/td&gt;&lt;td&gt;Water_allergy&lt;/td&gt;&lt;td&gt;Eye color&lt;/td&gt;&lt;td&gt;Race&lt;/td&gt;&lt;td&gt;Hair color&lt;/td&gt;&lt;td&gt;Height&lt;/td&gt;&lt;td&gt;Publisher&lt;/td&gt;&lt;td&gt;Skin color&lt;/td&gt;&lt;td&gt;Alignment&lt;/td&gt;&lt;td&gt;Weight&lt;/td&gt;&lt;td&gt;bmi&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="12" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;1&lt;/td&gt;&lt;td&gt;A-Bomb&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;yellow&lt;/td&gt;&lt;td&gt;Human&lt;/td&gt;&lt;td&gt;No Hair&lt;/td&gt;&lt;td&gt;203&lt;/td&gt;&lt;td&gt;Marvel Comics&lt;/td&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;good&lt;/td&gt;&lt;td&gt;441&lt;/td&gt;&lt;td&gt;107&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;2&lt;/td&gt;&lt;td&gt;Abe Sapien&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;blue&lt;/td&gt;&lt;td&gt;Icthyo Sapien&lt;/td&gt;&lt;td&gt;No Hair&lt;/td&gt;&lt;td&gt;191&lt;/td&gt;&lt;td&gt;Dark Horse Comics&lt;/td&gt;&lt;td&gt;blue&lt;/td&gt;&lt;td&gt;good&lt;/td&gt;&lt;td&gt;65&lt;/td&gt;&lt;td&gt;18&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;3&lt;/td&gt;&lt;td&gt;Abin Sur&lt;/td&gt;&lt;td&gt;Yes&lt;/td&gt;&lt;td&gt;blue&lt;/td&gt;&lt;td&gt;Ungaran&lt;/td&gt;&lt;td&gt;No Hair&lt;/td&gt;&lt;td&gt;185&lt;/td&gt;&lt;td&gt;DC Comics&lt;/td&gt;&lt;td&gt;red&lt;/td&gt;&lt;td&gt;good&lt;/td&gt;&lt;td&gt;90&lt;/td&gt;&lt;td&gt;26&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="12" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+
+---
+## Example regression table with `stargazer` 
+  
+.pull-left-c[
+
+Create a table of regression models instead
+
+````md
+```{r, regression_table, echo=FALSE, results="asis"}
+stargazer(data = lm(Height ~ Weight, data = df), 
+          type = "html", header = FALSE,
+          title = "Regression Results")
+```
+````
+
+]
+
+.pull-right-c[
+
+.medium[
+
+
+
+&lt;table style="text-align:center"&gt;&lt;caption&gt;&lt;strong&gt;Regression Results&lt;/strong&gt;&lt;/caption&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan="1" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;Height&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;Weight&lt;/td&gt;&lt;td&gt;0.109&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;(0.025)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;Constant&lt;/td&gt;&lt;td&gt;174.865&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;(3.843)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;Observations&lt;/td&gt;&lt;td&gt;490&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.037&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.035&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;57.935 (df = 488)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style="text-align:left"&gt;F Statistic&lt;/td&gt;&lt;td&gt;18.971&lt;sup&gt;***&lt;/sup&gt; (df = 1; 488)&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td style="text-align:right"&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+]
+
+]
+
+---
+
+
+## Summary statistics with `vtable`
+
+
+```r
+library(vtable)
+df  %&gt;% select(Alignment, bmi) %&gt;% st(.) 
+```
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Summary Statistics&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Variable &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; N &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Mean &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Std. Dev. &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Min &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Pctl. 25 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Pctl. 75 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Max &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Alignment &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 734 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... - &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... bad &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 207 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 28.2% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... good &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 496 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 67.6% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... neutral &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 24 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.3% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt;  &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; bmi &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 490 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 38.557 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 133.965 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 30 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2510 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+There are many alternatives for creating tables in R Markdown, see `knitr`, `kableExtra`, and `huxtable` packages.
+
+---
+
+
+
+
+class: middle, inverse
+
+# .fat[.fancy[Internal references]]
+
+---
+
+class: middle, inverse
+  
+## Cross-references: Figures
+
+For .blue-h[figures], insert a LaTeX label into the .blue-h[`fig.caption`] option, and use the .inline-c[\autoref{latex_label}] syntax in text
+
+````md
+`\autoref{scatter_plot}` visualises the relationship between the height and the weight of superheros.
+
+```{r ... fig.caption = "A Scatter Plot `\\label{scatter_plot}`"}
+ggplot(data = df) + 
+       geom_point(...
+```
+
+````
+
+&lt;br&gt;
+
+.out-t[[Figure 1](#autoref-figures) visualises the relationship between the two journal metrics.]
+
+❕❗Note: Two .blue-h[&amp;#92; &amp;#92;] before the label for figures!❕❗
+
+---
+class: middle, inverse
+
+## Cross-references: Tables
+
+For .blue-h[Markdown tables], insert a LaTeX label after the table caption, and use the .inline-c[\autoref{latex_label}] syntax in text
+
+```md
+See `\autoref{handmade_table}` for further details.
+
+
+: A hand-made table with R Markdown `\label{handmade_table}`
+
++--------------------+--------------------+
+| Left-Aligned       | Centered           | 
+...
+    
+
+```
+
+&lt;br&gt;
+
+.out-t[See [Table 1](#autoref-tables) for further details.]
+
+❕❗Note: One .blue-h[\] before the label for tables!❕❗
+
+---
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
