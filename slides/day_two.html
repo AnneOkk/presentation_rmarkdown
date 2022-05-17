@@ -261,10 +261,10 @@ class: middle, inverse
 
 ## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; check setup]
 
-#### In the 📱 terminal 📱, type ` git --version ` 
+#### In the 📱 terminal 📱: ` git --version ` 
 - you should see the Git version  ✅
 
-#### In the 📱 terminal 📱, type ` git config --global user.name ` 
+#### In the 📱 terminal 📱: ` git config --global user.name ` 
 - you should see the Git user name  ✅
 
 &lt;br /&gt; 
@@ -287,7 +287,7 @@ class: middle, inverse
 .pull-right[
 
 #### 2. Fill in some info, create a public repository (don't bother with Readme etc - those will be added later!)
-&lt;img src="img/testrepo.png" width="200px"/&gt;
+&lt;img src="img/testrepo.png" width="250px"/&gt;
 
 
 ]
@@ -342,6 +342,7 @@ class: middle, inverse
 
 ### 🎈 .fancy[Pushed files should appear in GitHub repository] 🎈
 
+
 ---
 
 class: middle, inverse
@@ -360,25 +361,242 @@ class: middle, inverse
   - personal information others should not see (e.g., credential files)
   - no rights to share (e.g., certain data files)
   - outputs that may be re-created (e.g., `outputs.pdf`)
+]
+
+.pull-right[
+
+&lt;img src="img/gitignore.png" width="500px"/&gt;
+
+]
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+
+### Imagine... 🤔
+
+--
+
+#### ...you work in a team of data scientists/ data enthusiastic researchers 🧙🧙🏿🧙‍♀️🧙🏻‍♀️
+
+--
+
+#### ...you want to be able to work together on a data analysis project 👨‍💻👩‍💻 👨‍💻👩‍💻
+
+--
+
+#### ...you want to keep track of what the others do and finally merge individual contributions into one overall project  ✨ 💾 ✨
+
+--
+
+### But how ❓ 🤷 
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+## .fancy[Scenario 1 - you are owner/ collaborator]
+
+
+### ... first things first!
+
+--
+
+.pull-left[
+
+#### Go to the GitHub repository you are working on as a team 
+
+#### In the 📱 terminal 📱, navigate to where you want to store the project files and type:
+
+
+##### .blue-h[`git clone https://github.com/AnneOkk/testrepo.git`] 
+
 
 ]
 
 .pull-right[
 
-&lt;img src="img/success.png" width="200px"/&gt;
-
-### 🎈 Pushed files should appear in GitHub repository 🎈
+&lt;img src="img/clone.png" width="300px"/&gt;
 ]
+
+
+
 ---
 
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+#### Next, you would always want to make sure that you are up to date with what has changed in the remote repository
+
+--
+
+.pull-left[
+
+#### In the 📱 terminal 📱, type:
+
+.blue-h[`git pull origin master`] 
+
+Create a new branch to add changes that belong to a novel feature you are working on (this prevents messing up the master branch)
+
+.blue-h[`git checkout -b "cool-feature"`]
+
+Now make some changes (e.g., add the new cool feature)
+
+]
+
+.pull-right[
+
+...and then the usual workflow (`git add .`, `git commit -m "new feature file added"`) 😴
 
 
+ 🚧 👀 BUT you push the changes to the newly created branch to prevent messing up the master branch! 👀 🚧
+
+.blue-h[`git push origin cool-feature`]
+
+
+]
+
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+
+&lt;img src="img/pull.png" width="400px"/&gt;
+
+On GitHub, you would now create a pull request
+
+Reviewers (other team members) may be assigned to check the changes and start a conversation (through comments)
+
+--
+
+### 🎉 Once all issues are resolved, your changes will be merged into the master branch 🥳 
+
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+... But what if some issues remain unresolved? 🤔 "Meh, you forgot to read in the data!"
+
+--
+
+.pull-left[
+You may just add small things through:
+
+`git add .`
+
+`git commit -m "added data reader"`
+
+`git push origin branch-name`
+
+❗ BUT if some time has passed or the addition is major❗
+
+Checkout to the master branch:
+
+.blue-h[`git checkout master`]
+]
+
+.pull-right[
+
+Pull all changes that happened in the mean time:
+
+.blue-h[`git pull origin master`]
+
+Checkout a new branch for the missing feature;
+
+.blue-h[`git checkout -b data-reader`]
+
+Make the necessary changes!
+
+... And then, the usual workflow (don't forget to push to new branch!)
+]
+
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+## .fancy[Scenario 2 - you want to contribute to an open science project]
+
+
+--
+
+.pull-left[
+
+#### In GitHub, navigate to the [project](https://github.com/AnneAlterEgo/Testrepo/tree/main) you want to contribute to 
+
+Fork the repo!
+
+&lt;img src="img/fork.png" width="250px"/&gt;
+
+ Clone the new repo! 
+
+ .blue-h[`git clone https://github.com/AnneOkk/Testrepo-1.git`] 
+
+Make your changes and push to your master branch 
+
+]
+
+.pull-right[
+
+Clone the new repo! 
+
+ .blue-h[`git clone https://github.com/AnneOkk/Testrepo-1.git`] 
+
+Make your changes and push to your master branch 
+
+
+]
+
+
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+
+.pull-left[
+Go back to the original repository and create a pull request. 
+
+You may need to click "compare across forks"
+
+&lt;img src="img/successful_pull.png" width="500px"/&gt;
+]
+
+.pull-right[
+... On the other side 
+
+
+&lt;img src="img/review_pull.png" width="300px"/&gt;
+
+ If you're happy with the changes, merge! Otherwise, request additional changes in a comment. 
+
+]
+
+--
+
+###🎊 Yey, you're all set to contribute to open science projects on GitHub! 🎊
+
+---
 
 class: middle, inverse
 
 # .salt[.fancy[Your turn! 🤹]]
 
-1.  Connect your local R project folder to GitHub repository
+1.  Connect your local R project folder with a GitHub repository
 
 2. Change some of the content in R, save, and then push the changes to GitHub
   - .blue-h[`git add .`]
@@ -387,7 +605,7 @@ class: middle, inverse
 
     &lt;br /&gt; 
 
-3. [OPTIONAL] 
+3. [OPTIONAL] Create a pull request for your own repository and merge the changes into the master branch 
 
 
 
