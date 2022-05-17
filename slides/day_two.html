@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R Markdown Workshop - Day 2</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Anne-Kathrin Kleine" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/sfah.css" type="text/css" />
+    <link rel="stylesheet" href="css/fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+name: Rmarkdown Intro
+class: left, middle
+background-image: url(img/yoal-desurmont-jqgsM3B9Fpo-unsplash.jpg)
+background-size: cover
+
+&lt;h1&gt;&lt;span style="color:white"&gt; .fat[.fancy[R Markdown Workshop - Day 2]]&lt;/span&gt;
+&lt;br /&gt; 
+&lt;br /&gt; 
+
+&lt;h2&gt;&lt;span style="color:white"&gt; .fancy[Creation, organisation, storage, and collaboration]&lt;/span&gt;
+
+&lt;h3&gt;&lt;span style="color:white"&gt; Anne-Kathrin Kleine | University of Groningen &lt;/span&gt;
+
+
+&lt;!-- this ends up being the title slide since seal = FALSE--&gt;
+
+
+
+
+
+&lt;style type="text/css"&gt;
+
+.hljs-github .hljs {
+    background: #D3D3D3;
+}
+
+.inline-c, remark-inline-code {
+   background: #228B22;
+   border-radius: 3px;
+   padding: 4px;
+   font-family: 'Source Code Pro', 'Lucida Console', Monaco, monospace;
+}
+
+
+.blue-h{
+   background: #1261A0;
+}
+
+
+.out-t, remark-inline-code {
+   background: #1261A0;
+   border-radius: 3px;
+   padding: 4px;
+   
+}
+
+.pull-left-c {
+    float: left;
+    width: 58%;
+    
+}
+
+.pull-right-c {
+    float: right;
+    width: 38%;
+    
+}
+
+.left2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    
+}
+
+--
+
+.right2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    
+}
+
+--
+
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+.medium {
+    font-size: 75%
+}
+
+.small {
+    font-size: 50%
+    }
+
+.action {
+    background-color: #f2eecb;
+  
+}
+
+
+&lt;/style&gt;
+    
+
+&lt;!-- this adds the link footer to all slides, depends on my-footer class in css--&gt;
+
+
+---
+class: middle, inverse
+
+# .fat[.fancy[Version control]]
+
+---
+class: middle, inverse
+
+## .fancy[Version control]
+
+.pull-left[
+- Research papers have many versions before publication
+- two main challenges emerge:
+  - keeping track of changes and versions
+  - reverting a previous version if necessary 
+- different approaches for version control:
+  - edit, rename and save files
+  - use applications (Dropbox, Google Docs, Overleaf)
+  - use version control systems such as Git and GitHub 
+]
+
+.pull-right[
+
+```r
+manuscript
+   |
+   |- journals_FINAL_19May.Rmd
+   |- journals_PAPERVERS_17May.Rmd
+   |- journals_10May.Rmd
+   |- journals_FINAL.Rmd
+   |- journals_26APRIL_newliterature.Rmd
+   
+   ...
+   
+   |- journals.Rproj
+   |- references.bib  
+   |- apa_7th.csl
+```
+]
+---
+class: middle, inverse
+
+# .fat[.fancy[Version control with Git and GitHub]]
+
+---
+
+class: middle, inverse
+
+## .fancy[Advantages of using Git and GitHub]
+
+.pull-left[
+
+
+#### 🎈 Contribute to open source projects, see [here](https://www.dataschool.io/how-to-contribute-on-github/)
+- almost all open source projects use GitHub
+
+#### 🎤 Showcase your work
+
+
+#### 🔍 Track changes across versions 
+]
+
+.pull-right[
+#### 👨‍🔬 👷‍♀️ Collaborate on projects 
+
+
+#### 🤹‍♂️ Various integration options
+- GitHub can integrate with many common platforms such as Amazon and Google Cloud; or use GitHub pages or Netlify to build websites based on your R (Markdown) files 
+]
+---
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; Definitions]
+
+### Git &lt;img src="img/git.png" width="50px" &gt;
+
+- a software that keeps track of versions of a set of files
+- it is *local* to you; the records are kept on your computer
+
+--
+
+### GitHub &lt;img src="img/github.png" width="70px" &gt;
+
+- a hosting service, or a website, that can keep the records
+- it is *remote* to you, like the Dropbox website
+- but unlike Dropbox, GitHub is specifically structured to keep records with Git
+
+
+
+---
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; Definitions]
+
+### Repository, or repo
+- a set of files whose records are kept together, by Git and/or on GitHub
+- it is like a folder, which can keep files and other folders containing files
+
+--
+
+### To commit
+- to take a snapshot of, or to version, a repository
+- it is like saving a new version of all files and sub-folders in your project folder with a new name
+- it is local, the records are kept on your computer unless you push
+
+--
+
+### To push
+- to move a copy of the records from Git to GitHub, from your computer to online server
+- it is like uploading (the new versions of) your files and sub-folders to a website
+
+---
+
+class: center, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub]
+
+&lt;img src="img/repository.png" width="500px" &gt;
+
+---
+
+class: middle, inverse
+
+## .fat[.fancy[How familiar are you with using the command line (terminal, power shell...)?]] 
+
+### Go to [www.menti.com](www.menti.com) 🤸 and enter the code **6059 2895** 
+
+### [See results](https://www.mentimeter.com/app/presentation/8377d55da27523147614cd11aba6f796/82eb3869f165)
+
+---
+
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; check setup]
+
+#### In the 📱 terminal 📱, type ` git --version ` 
+- you should see the Git version  ✅
+
+#### In the 📱 terminal 📱, type ` git config --global user.name ` 
+- you should see the Git user name  ✅
+
+&lt;br /&gt; 
+
+#### 🚫  If these steps did not work, go back [here](https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git) and continue setting up Git where you left off
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; connect local with remote]
+
+.pull-left[
+#### 1. Go to GitHub and create a new repository 
+
+&lt;img src="img/new_repo.png" width="200px"/&gt;
+
+]
+
+.pull-right[
+
+#### 2. Fill in some info, create a public repository (don't bother with Readme etc - those will be added later!)
+&lt;img src="img/testrepo.png" width="200px"/&gt;
+
+
+]
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; connect local with remote]
+
+.pull-left[
+#### 3. Follow the steps in Option 1: .blue-h["…create a new repository on the command line"] 
+
+&lt;img src="img/push.png" width="400px"/&gt;
+
+]
+
+.pull-right[
+
+#### 4. In the 📱 terminal 📱, navigate to your R project folder 
+&lt;img src="img/navigate.png" width="200px"/&gt;
+]
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; connect local with remote]
+
+.pull-left[
+#### 5. In the 📱 terminal 📱, type:
+
+.blue-h[`git init`] this initializes a git repo on your local machine
+
+.blue-h[`git add .`] this stages all the content in that folder to be committed
+
+.blue-h[`git commit -m "fist commit"`] stages all content to be pushed in next step
+
+.blue-h[`git remote add origin https://github.com/AnneOkk/testrepo.git`] substitute with your repo URL 
+
+]
+
+.pull-right[
+
+.blue-h[`git push origin master`] push all the content from Git to GitHub
+
+&lt;img src="img/success.png" width="300px"/&gt;
+
+
+]
+
+--
+
+### 🎈 .fancy[Pushed files should appear in GitHub repository] 🎈
+
+---
+
+class: middle, inverse
+
+## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; .gitignore]
+
+.pull-left[
+
+- .blue-h[`.gitignore`] file specifies which file(s) and/or folder(s) should be excluded from version control
+
+- lists one item per line; each line has a pattern, which determines whether files should be ignored 
+
+- see [gitignore documentation](https://git-scm.com/docs/gitignore) for more info on the different patterns 
+
+- reasons to exclude files from being pushed include:
+  - personal information others should not see (e.g., credential files)
+  - no rights to share (e.g., certain data files)
+  - outputs that may be re-created (e.g., `outputs.pdf`)
+
+]
+
+.pull-right[
+
+&lt;img src="img/success.png" width="200px"/&gt;
+
+### 🎈 Pushed files should appear in GitHub repository 🎈
+]
+---
+
+
+
+
+class: middle, inverse
+
+# .salt[.fancy[Your turn! 🤹]]
+
+1.  Connect your local R project folder to GitHub repository
+
+2. Change some of the content in R, save, and then push the changes to GitHub
+  - .blue-h[`git add .`]
+  - .blue-h[`git commit -m "senseful commit message that describes the change(s)"`]
+  - .blue-h[`git push origin master`]
+
+    &lt;br /&gt; 
+
+3. [OPTIONAL] 
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
