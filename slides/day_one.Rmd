@@ -354,7 +354,7 @@ YAML includes the metadata variables
 
 
 ```{r, eval=FALSE}
----  #<
+---  #<<
 title: 
 output:
 ---  #<<
