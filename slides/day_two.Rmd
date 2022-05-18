@@ -624,120 +624,73 @@ class: middle, inverse
 
 
 ---
-name: blogdown-title
-background-image: url(img/ada_lovelace_cropped.png)
-background-size: cover
-class: inverse
 
-# Meet blogdown
+class: middle, inverse
+
+# .fat[.fancy[Meet blogdown]]
 
 <img src="https://bookdown.org/yihui/blogdown/images/logo.png" alt="Blogdown" width="180" />
 
 ### .fancy[Making Websites in R Markdown]
 
-.large[Alison Hill | rstudio::conf | `r Sys.Date()`]
-
-<!-- this ends up being the title slide since seal = FALSE-->
-
+### Material adapted from [Alison Hill and Yihui Xie's Advanced R Workshop](https://github.com/rstudio-education/arm-workshop-rsc2019)
 ---
 
-## So what is blogdown?<sup>*</sup>
+class: middle, inverse
 
+## .fancy[What is blogdown?]
 
-- [R Markdown](https://rmarkdown.rstudio.com) <img src="https://www.rstudio.com/wp-content/uploads/2015/12/RStudio_Hex_rmarkdown.png" width="10%" align="right" />
+<img src="img/blogdown_work.png" width="650px"/>
 
-    - (relatively) simple syntax for writing documents
-    
-    - the simpler, the more portable (multiple output formats)
-    
-    - not only convenient (maintenance), but also reproducible
-    
-    - most features of R Markdown _and_ [**bookdown**](https://bookdown.org) (technical writing)!!
+---
+class: middle, inverse
 
---
+## .fancy[What is blogdown?]
 
-- [Hugo](https://gohugo.io) <img src="https://gohugo.io/img/hugo.png" width="10%" align="right" />
-
-    - free, open-source, and easy to install (a single binary)
-    
-    - lightning fast (generates one page in one millisecond)
-    
-    - general-purpose (not only for blogs)
-
-.footnote[
-[\*] From Yihui: https://slides.yihui.name/2017-rmarkdown-UNL-Yihui-Xie.html#35.
+.pull-left[
+<img src="img/blogdown_step2.png" width="700px"/>
 ]
 
-???
-
-Pandoc's Markdown: paragraphs, section headings, (un)numbered lists, blockquotes, math expressions, tables, images, footnotes, bibliography/citations, ...
-
-See Chapter 2 of the **bookdown** book for additional Markdown features, such as figure/table captions, cross-references, numbered equations, theorems, ...
-
+.pull-right[
+- Hugo is a static site generator 
+- free, open-source, relatively easy to use
+- extremely fast and multiple purpose (websites, blogs,...)
+]
 
 ---
 
-## Why not WordPress, Tumblr, Medium.com, Blogger.com, etc?<sup>*</sup>
+class: middle, inverse
+
+## .fancy[Why not WordPress, Tumblr, Medium.com, Blogger.com, etc?]
 
 - No R Markdown support (even math support is often nonexistent or awkward)
 
---
-
-- Huge benefits of static websites compared to dynamic websites
-
-    - all static files, no PHP or databases, no login/password, work everywhere (even offline)
-    
-    - typically fast to visit (no computation needed on the server side), and easy to speed up via CDN
-
-.footnote[
-[\*] From Yihui: https://slides.yihui.name/2017-rmarkdown-UNL-Yihui-Xie.html#36.
-]
-
-???
-
-If all you want to write about is what you had for breakfast today, or how cute your kittens are, there is no need to use blogdown. If there is anything related to R, statistical computing, and/or graphics, blogdown will be much more convenient.
-
+- If all you want to write about is what you had for breakfast today, or how cute your kittens are, there is no need to use blogdown. If there is anything related to R, statistical computing, and/or graphics, blogdown will be much more convenient.
 
 ---
 class: inverse, middle, center
 
-# .fancy[Build a site for [Ada Lovelace](https://en.wikipedia.org/wiki/Ada_Lovelace)]
+# .fancy[Build a site for your project]
 
-![](https://lh3.googleusercontent.com/iXmJ9aWblkGDpg-_jpcqaY10KmA8HthjZ7F15U7mJ9PQK6vZEStMlathz1FfQQWV5XeeF-A1tZ0UpDjx3q6vEm2BWZn5k1btVSuBk9ad=s660)
-
---
-
-.pull-left[
-### .fancy[.center[Local with GitHub]]
-### .fancy[.center[`r emo::ji("computer")` + <i class="fab fa-github fa-lg fa-fw"></i>]]
-]
-
---
-
-.pull-right[
-### .fancy[.center[Cloud or Local (no GitHub)]]
-### .fancy[.center[`r emo::ji("cloud")` | `r emo::ji("computer")`]]
-]
-
-
-
+```{r echo = FALSE, out.width='60%'}
+include_graphics("img/blogdown-exampleSite.png")
+```
 
 ---
 name: start-here
 class: inverse, middle
 
-.pull-left[
-### .fancy[.center[Local with GitHub]]
+## .fancy[.center[Build a site local with GitHub]]
+
 ### .fancy[.center[`r emo::ji("computer")` + <i class="fab fa-github fa-lg fa-fw"></i>]]
-
-
 
 1. Make a [repo on <i class="fab fa-github fa-lg fa-fw"></i>GitHub](https://happygitwithr.com/new-github-first.html#make-a-repo-on-github-1)
 
-1. Make a [new RStudio project via git clone](https://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone) <br>
-    *File > New Project > Version Control > Git*
+1. Connect remote repo to local 
 
-1. Run:
+1. Create a new R project
+
+1. In console, run:
 
 ```{r eval = FALSE}
 library(blogdown)
@@ -748,34 +701,13 @@ new_site(theme = "jpescador/hugo-future-imperfect",
          to_yaml = TRUE)
 ```
 
-]
-
-.pull-right[
-### .fancy[.center[Cloud or Local]]
-### .fancy[.center[`r emo::ji("cloud")` | `r emo::ji("computer")`]]
-
-
-1. Make a new RStudio project via wizard <br> 
-    *File > New Project > New Directory*
-
-1. Scroll down to select: <br>
-    <img src="https://discourse-cdn-sjc2.com/standard10/uploads/gohugo/original/2X/c/c2d3414c64e766d814100b32063948e604298a70.png" width="4%"> *Website using blogdown*
-
-```{r echo = FALSE, out.width='80%'}
-knitr::include_graphics("img/blogdown-workflow-wizard.png")
-```
-
-
-]
 
 
 ???
 
 if an exampleSite exists, it will be in themes/<hugo-future-imperfect>/exampleSite
 
-
 theme_example copies that exampleSite into your project root directory (you can always delete the content later)
-
 
 sample adds a sample R Markdown blog post (can end up in wrong place though)
 
@@ -790,7 +722,7 @@ class: middle, inverse, center
 
 # `r emo::ji("crystal_ball")`
 
-## Gaze into your directory structure
+## .fancy[Gaze into your directory structure]
 
 .footnote[
 https://bookdown.org/yihui/blogdown/a-quick-example.html
@@ -798,52 +730,56 @@ https://bookdown.org/yihui/blogdown/a-quick-example.html
 
 
 ---
+class: inverse, middle
+
 name: dir-structure
 
 # `r emo::ji("closed_lock_with_key")` Directory Structure
 
 ```{r eval = FALSE}
 .
-├── .Rproj.user/
-├── ada-blog.Rproj
-├── archetypes/ 
-├── config.toml
-├── content/
-├── data/
+├── R
+├── README.md
+├── archetypes
+├── config.yaml
+├── content
+├── data
+├── example_page.Rproj
 ├── index.Rmd
-├── layouts/ 
-├── public/
-├── resources/
-├── static/
+├── layouts
+├── netlify.toml
+├── public
+├── resources
+├── static
 ├── staticman.yml
-└── themes/
+└── themes
 ```
 
 
-.footnote[
-https://gohugo.io/getting-started/directory-structure/
-]
-
 ---
+class: inverse, middle
+
 name: hugo-index
 
 # `r emo::ji("closed_lock_with_key")` Directory Structure
 
 ```{r eval = FALSE}
 .
-├── .Rproj.user/
-├── ada-blog.Rproj
-├── archetypes/ 
-├── config.toml
-├── content/
-├── data/
-├── index.Rmd # DO NOT TOUCH #<<
-├── layouts/ 
-├── public/ 
-├── resources/
-├── static/
+├── R
+├── README.md
+├── archetypes
+├── config.yaml
+├── content
+├── data
+├── example_page.Rproj
+├── index.Rmd # DO NOT TOUCH! #<<
+├── layouts
+├── netlify.toml
+├── public
+├── resources
+├── static
 ├── staticman.yml
-└── themes/
+└── themes
 ```
 
 --
@@ -860,25 +796,29 @@ index.Rmd does one thing- let's open it up- it is your only R markdown YAML. It 
 
 
 ---
+class: inverse, middle
+
 name: hugo-public
 
 # `r emo::ji("closed_lock_with_key")` Directory Structure
 
 ```{r eval = FALSE}
 .
-├── .Rproj.user/
-├── ada-blog.Rproj
-├── archetypes/ 
-├── config.toml
-├── content/
-├── data/
+├── R
+├── README.md
+├── archetypes
+├── config.yaml
+├── content
+├── data
+├── example_page.Rproj
 ├── index.Rmd 
-├── layouts/ 
-├── public/ # IGNORE #<<
-├── resources/
-├── static/
+├── layouts
+├── netlify.toml
+├── public # IGNORE! #<<
+├── resources
+├── static
 ├── staticman.yml
-└── themes/
+└── themes
 ```
 
 ???
@@ -976,9 +916,9 @@ class: middle, inverse, center
 
 
 ```{r echo = FALSE, out.width="2000px"}
-list_png <- c(here::here("static/slides/img/blogdown-lifecycle-04.png"),
-              here::here("static/slides/img/blogdown-lifecycle-05.png"),
-              here::here("static/slides/img/blogdown-lifecycle-06.png"))
+list_png <- c(here::here("slides/img/blogdown-lifecycle-04.png"),
+              here::here("slides/img/blogdown-lifecycle-05.png"),
+              here::here("slides/img/blogdown-lifecycle-06.png"))
 list_png %>% 
   map(image_read) %>% # reads each path file
   image_join() %>% # joins image
