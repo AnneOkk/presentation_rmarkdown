@@ -137,7 +137,7 @@ class: middle, inverse
 
 .pull-left[
 - Research papers have many versions before publication
-- two main challenges emerge:
+- two main challenges:
   - keeping track of changes and versions
   - reverting a previous version if necessary 
 - different approaches for version control:
@@ -408,9 +408,9 @@ class: middle, inverse
 
 .pull-left[
 
-#### Go to the GitHub repository you are working on as a team 
+#### 1) Go to the GitHub repository you are working on as a team 
 
-#### In the 📱 terminal 📱, navigate to where you want to store the project files and type:
+#### 2) In the 📱 terminal 📱, navigate to where you want to store the project files and type:
 
 
 ##### .blue-h[`git clone https://github.com/AnneOkk/testrepo.git`] 
@@ -431,35 +431,36 @@ class: middle, inverse
 
 ## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
 
-#### Next, you would always want to make sure that you are up to date with what has changed in the remote repository
+#### 3) Next, you would always want to make sure that you are up to date with what has changed in the remote repository
 
 --
 
-.pull-left[
 
 #### In the 📱 terminal 📱, type:
 
 .blue-h[`git pull origin master`] 
 
-Create a new branch to add changes that belong to a novel feature you are working on (this prevents messing up the master branch)
+--
+
+4) Create a new branch to add changes that belong to a novel feature you are working on (this prevents messing up the master branch)
 
 .blue-h[`git checkout -b "cool-feature"`]
 
-Now make some changes (e.g., add the new cool feature)
+--
 
-]
+5) Now make some changes (e.g., add the new cool feature)
 
-.pull-right[
+--
 
-...and then the usual workflow (`git add .`, `git commit -m "new feature file added"`) 😴
+6) Add, commit, and push the files 
+...through the usual workflow (`git add .`, `git commit -m "new feature file added"`) 😴
 
+
+--
 
  🚧 👀 BUT you push the changes to the newly created branch to prevent messing up the master branch! 👀 🚧
 
 .blue-h[`git push origin cool-feature`]
-
-
-]
 
 
 ---
@@ -471,13 +472,13 @@ class: middle, inverse
 
 &lt;img src="img/pull.png" width="400px"/&gt;
 
-On GitHub, you would now create a pull request
+7) On GitHub, you create a pull request
 
 Reviewers (other team members) may be assigned to check the changes and start a conversation (through comments)
 
 --
 
-### 🎉 Once all issues are resolved, your changes will be merged into the master branch 🥳 
+8) Once all issues are resolved, your changes will be merged into the master branch 🥳 
 
 
 ---
@@ -486,40 +487,42 @@ class: middle, inverse
 
 ## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
 
-... But what if some issues remain unresolved? 🤔 "Meh, you forgot to read in the data!"
+... But what if some issues remain unresolved?  👆"You forgot to read in the data!" 🤔
 
 --
 
-.pull-left[
-You may just add small things through:
+You may add small things through `git add .`, `git commit -m "added data reader"`, `git push origin branch-name`
 
-`git add .`
-
-`git commit -m "added data reader"`
-
-`git push origin branch-name`
+--
 
 ❗ BUT if some time has passed or the addition is major❗
 
-Checkout to the master branch:
+--
+
+⏩ Checkout to the master branch:
 
 .blue-h[`git checkout master`]
-]
 
-.pull-right[
+--
 
 Pull all changes that happened in the mean time:
 
 .blue-h[`git pull origin master`]
 
+--
+
 Checkout a new branch for the missing feature;
 
 .blue-h[`git checkout -b data-reader`]
 
+--
+
 Make the necessary changes!
 
+--
+
 ... And then, the usual workflow (don't forget to push to new branch!)
-]
+
 
 
 ---
@@ -533,58 +536,47 @@ class: middle, inverse
 
 --
 
-.pull-left[
+1) In GitHub, navigate to the [project](https://github.com/AnneAlterEgo/Testrepo/tree/main) you want to contribute to 
 
-#### In GitHub, navigate to the [project](https://github.com/AnneAlterEgo/Testrepo/tree/main) you want to contribute to 
+--
 
-Fork the repo!
+2) Fork the repo!
 
 &lt;img src="img/fork.png" width="250px"/&gt;
 
- Clone the new repo! 
+--
 
- .blue-h[`git clone https://github.com/AnneOkk/Testrepo-1.git`] 
+ 3) Clone the new repo! 
 
-Make your changes and push to your master branch 
-
-]
-
-.pull-right[
-
-Clone the new repo! 
-
- .blue-h[`git clone https://github.com/AnneOkk/Testrepo-1.git`] 
-
-Make your changes and push to your master branch 
-
-
-]
-
-
+.blue-h[`git clone https://github.com/AnneOkk/Testrepo-1.git`] 
 
 ---
 
 class: middle, inverse
 
-## .fancy[Version Control &amp;mdash; Git and GitHub &amp;mdash; collaborating]
+4) Make your changes and then add, commit, and push to your master branch 
 
-.pull-left[
-Go back to the original repository and create a pull request. 
+--
+
+5) On GitHub, go back to the original repository and create a pull request. 
 
 You may need to click "compare across forks"
 
 &lt;img src="img/successful_pull.png" width="500px"/&gt;
-]
 
-.pull-right[
-... On the other side 
+---
 
+class: middle, inverse
+
+### ... On the other side 
 
 &lt;img src="img/review_pull.png" width="300px"/&gt;
 
- If you're happy with the changes, merge! Otherwise, request additional changes in a comment. 
+Open and review the pull request! 🔍
 
-]
+If you're happy with the changes, merge! 👍
+
+Otherwise, request additional changes in comments. 💬
 
 --
 
@@ -607,6 +599,7 @@ class: middle, inverse
 
 3. [OPTIONAL] Create a pull request for your own repository and merge the changes into the master branch 
 
+4. [OPTIONAL] One team member creates a pull request for the other team member's repository (first fork and clone); the repo owner merges the changes into her/his master (or main) branch. 
 
 
 
